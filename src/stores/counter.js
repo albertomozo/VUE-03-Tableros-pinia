@@ -21,6 +21,8 @@ export const UseCounter = defineStore("counter", ()=>{
   return {count,name,increment,reverseName, double, nameUpper}
 })
 
+
+
 // regla  const comenzar con UseNombre 
 /* export const UseCounter = defineStore ("Counter", {
     //state 
