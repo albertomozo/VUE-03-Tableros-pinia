@@ -4,7 +4,9 @@
     const store = useTodo()
     const task = ref('')
     function addNewTask(){
-        store.addTodo(task.value);
+        if (task.value.trim().length === 0) { return}
+        store.addTodo(task.value.trim());
+        task.value = ''
     }
 </script>
 

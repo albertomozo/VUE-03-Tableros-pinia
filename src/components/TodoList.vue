@@ -1,13 +1,18 @@
 <script setup>
     import {useTodo} from "../stores/todo";
+    import TodoListItem from "./TodoListItem.vue";
     const store = useTodo();
 </script>
 
 <template>
-    <ul>
-        {{ store.todoList }}
-        <li v-for="todo in store.todoList" :key="todo.id">
-        {{ todo.task }}
-        </li>
+    <ul> 
+        <template v-for="todo in store.todoList" :key="todo.id">
+            <TodoListItem 
+                :id="todo.id"
+                :task="todo.task"
+                :completed="todo.completed"
+                :fecha="todo.fecha"
+            />
+        </template>
     </ul>
 </template>

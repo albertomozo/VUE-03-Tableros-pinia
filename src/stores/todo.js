@@ -7,7 +7,8 @@ export const  useTodo  = defineStore("todo", {
     }),
     actions :{
         addTodo(task){
-            const newTask = {id:this.id++,task:task };
+            const fecha = new Date();
+            const newTask = {id:this.id++,task:task, completed : false, fecha:fecha}
             this.todoList.push(newTask);
         }
     
