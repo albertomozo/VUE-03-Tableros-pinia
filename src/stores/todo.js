@@ -10,6 +10,16 @@ export const  useTodo  = defineStore("todo", {
             const fecha = new Date();
             const newTask = {id:this.id++,task:task, completed : false, fecha:fecha}
             this.todoList.push(newTask);
+        },
+        toggleTodo (taskid){
+            const task =   this.todoList.find(item=>item.id === taskid) ;
+            if (task){
+                task.completed = !task.completed;
+            }   
+        },
+        deleteTodo(id){
+            console.log('delete')
+            this.todoList = this.todoList.filter(item => item.id !== id)
         }
     
     }
