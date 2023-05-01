@@ -3,10 +3,12 @@ import { defineStore } from "pinia";
 export const  useTodo  = defineStore("todo", {
     state : () =>({
         boardList : [
-            {boardid:0,title:'Primer Board'}
+            {boardId:0,title:'Primer Board'}
         ],
         boardId :1,
-        todoList: [],
+        todoList: [
+            {boardId:0,id:0, task : "primera task"}
+        ],
         id:0
     }),
     getters : {
@@ -16,7 +18,14 @@ export const  useTodo  = defineStore("todo", {
         totalCompleted : (state) => {
             const total = state.todoList.filter((item)=> item.completed === true)
             return total.length;
-        }
+        },
+        itemsBoard: (state) => (boardId) => {
+            console.log('entro')
+             console.log(state.todoList)
+            const TodoListBoard = state.todoList.filter((item) => item.boardId === boardId)
+            console.log(TodoListBoard)
+            return TodoListBoard
+          }
     },
     actions :{
         addBoard(title){

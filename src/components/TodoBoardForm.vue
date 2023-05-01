@@ -6,7 +6,7 @@
     function addNewBoard(){
         if (boardTitle.value.trim().length === 0) { return}
         store.addBoard(boardTitle.value.trim());
-        task.value = ''
+        boardTitle.value = ''
     }
 </script>
 

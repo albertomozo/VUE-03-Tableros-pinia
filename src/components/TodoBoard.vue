@@ -1,6 +1,6 @@
 <script setup>
     import {useTodo} from "../stores/todo";
-    /* import TodoList from "./TodoList.vue"; */
+    import TodoList from "./TodoList.vue";
     const store = useTodo();
     
 </script>
@@ -8,11 +8,15 @@
 <template>
     <h3>Lista de tableros</h3>
     {{ store.boardList }}
-    <ul> 
+    <section> 
         <template v-for="board in store.boardList" :key="board.id">
-            <li>
-                {{ board.title}}
-            </li>
+            <article>
+                <h3>{{ board.title}}</h3>
+                <TodoList 
+                    :boardId=board.boardId
+                  
+                />
+            </article>
         </template>
-    </ul>
+    </section>
 </template>
