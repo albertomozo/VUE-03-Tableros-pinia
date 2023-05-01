@@ -2,6 +2,10 @@ import { defineStore } from "pinia";
 
 export const  useTodo  = defineStore("todo", {
     state : () =>({
+        boardList : [
+            {boardid:0,title:'Primer Board'}
+        ],
+        boardId :1,
         todoList: [],
         id:0
     }),
@@ -15,9 +19,15 @@ export const  useTodo  = defineStore("todo", {
         }
     },
     actions :{
-        addTodo(task){
+        addBoard(title){
             const fecha = new Date();
-            const newTask = {id:this.id++,task:task, completed : false, fecha:fecha}
+            const newBoard = {boardId:this.boardId++,title:title,  fecha:fecha}
+            this.boardList.push(newBoard);
+
+        },
+        addTodo(task,boardId){
+            const fecha = new Date();
+            const newTask = {boardId:boardId,id:this.id++,task:task, completed : false, fecha:fecha}
             this.todoList.push(newTask);
         },
         toggleTodo (taskid){
