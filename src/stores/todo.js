@@ -5,6 +5,15 @@ export const  useTodo  = defineStore("todo", {
         todoList: [],
         id:0
     }),
+    getters : {
+        totalTodo : (state) => {
+            return state.todoList.length
+        },
+        totalCompleted : (state) => {
+            const total = state.todoList.filter((item)=> item.completed === true)
+            return total.length;
+        }
+    },
     actions :{
         addTodo(task){
             const fecha = new Date();
