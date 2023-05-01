@@ -17,6 +17,7 @@
                   
                 />
             </article>
+            <hr>
         </template>
     </section>
 </template>

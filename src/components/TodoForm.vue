@@ -1,17 +1,24 @@
 <script setup>
-    import {ref} from 'vue';
+    import {defineProps,  ref} from 'vue';
     import {useTodo} from '../stores/todo';
     const store = useTodo()
     const task = ref('')
-    function addNewTask(){
+    const props = defineProps(
+        {
+            boardId : Number,
+        })
+    
+
+    function addNewTask(boardId){
         if (task.value.trim().length === 0) { return}
-        store.addTodo(task.value.trim());
+        store.addTodo(task.value.trim(),boardId);
         task.value = ''
     }
+
 </script>
 
 <template>
-    <form @submit.prevent="addNewTask">
+    <form @submit.prevent="addNewTask(props.boardId)">
         <input type="text"  v-model="task">
         <button>Añadir</button>
     </form>

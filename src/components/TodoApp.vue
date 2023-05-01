@@ -16,5 +16,6 @@
  <!--    <p v-if="hasTodo">{{ `${totalCompleted} tareas completadas de ${totalTodo}` }}</p> -->
     <TodoBoardForm />
     <TodoBoard />
+    
  <!--    <p v-if = "!hasTodo">Todavía no tienes ninguna tarea. Animate!!</p> -->
 </template>

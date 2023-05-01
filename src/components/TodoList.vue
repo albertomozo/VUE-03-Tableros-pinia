@@ -2,19 +2,20 @@
    
     import {useTodo} from "../stores/todo";
     import TodoListItem from "./TodoListItem.vue";
-    import { defineProps } from "vue";
+    import TodoForm from "./TodoForm.vue";
+    import { defineProps, computed } from "vue";
     const store = useTodo();
     const props = defineProps({  
         boardId : Number
     } )
     console.log(props.boardId)
     
-  /*   const TodoListBoard = store.itemsBoard(props.boardId);
+  
+ 
+    const itemsBoard = computed (() => {
+        return store.itemsBoard(props.boardId);
+    })
 
-    console.log(TodoListBoard) */
-    /* const itemsBoard = store.getters.itemsBoard(boardId) */
-/*     const itemsBoard = computed(() => store.getters.itemsBoard(boardId.value)); */
-    const itemsBoard = store.getters.itemsBoard(props.boardId);
 </script>
 
 <template>
@@ -32,4 +33,7 @@
             />
         </template>
     </ul>
+    <TodoForm
+        :boardId = "props.boardId"
+    />
 </template>
