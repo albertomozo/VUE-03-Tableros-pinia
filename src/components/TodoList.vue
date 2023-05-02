@@ -15,16 +15,26 @@
     const itemsBoard = computed (() => {
         return store.itemsBoard(props.boardId);
     })
+    const itemsBoardCompleted = computed (() => {
+        return store.itemsBoardCompleted(props.boardId);
+    });  
+    const itemsBoardTotal  = computed (() => {
+        return store.itemsBoardTotal(props.boardId);
+    });  
+    const hasItemsBoard = computed (() =>  {
+        return store.itemsBoardTotal(props.boardId) >0 ? true : false;
+    }) 
+
+    
 
 </script>
 
 <template>
-  <!--   <p> boardId {{  props.boardId }}</p>
-    <p>{{ TodoListBoard }}</p> -->
+    <p v-if="hasItemsBoard">Tienes  {{ itemsBoardCompleted }}
+    tareas completadas de un total de  {{ itemsBoardTotal}}</p>
     <ul> 
         <template v-for="todo in itemsBoard" :key="todo.id">
         
-            {{ todo }}
             <TodoListItem 
                 :id="todo.id"
                 :task="todo.task"
@@ -36,4 +46,5 @@
     <TodoForm
         :boardId = "props.boardId"
     />
+    <p v-if="!hasItemsBoard">Upps !!! .No has introducido ninguna tarea. </p>
 </template>

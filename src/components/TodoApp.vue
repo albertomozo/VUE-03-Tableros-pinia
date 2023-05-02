@@ -5,7 +5,7 @@
     import TodoBoard from "./TodoBoard.vue";
     import TodoBoardForm from "./TodoBoardForm.vue";
     const store = useTodo()
-    //const {totalTodo, totalCompleted} = storeToRefs(store)
+    const {totalBoard} = storeToRefs(store)
     const hasTodo = computed (() => {
         return store.totalBoard >0 ? true : false;
     })
@@ -13,9 +13,10 @@
 
 <template>
     <h1>Boards </h1>
- <!--    <p v-if="hasTodo">{{ `${totalCompleted} tareas completadas de ${totalTodo}` }}</p> -->
+    
+    <p v-if="hasTodo">{{ ` hay un total de   ${totalBoard} tableros `}}</p>
     <TodoBoardForm />
     <TodoBoard />
     
- <!--    <p v-if = "!hasTodo">Todavía no tienes ninguna tarea. Animate!!</p> -->
+    <p v-if = "!hasTodo">Todavía no tienes ningun Tablero. Animate!!</p>
 </template>
